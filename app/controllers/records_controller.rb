@@ -1,0 +1,3 @@
+class RecordsController < ApplicationController
+
+end

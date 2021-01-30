@@ -5,6 +5,7 @@ require './config/environment'
 #end
 
 use Rack::MethodOverride
+use RecordsController
+use UsersController
 run ApplicationController
-run SessionsController
-run UsersController
+use SessionsController
