@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 
     get '/users' do 
-        @users = User.all 
+        @users = Users.all 
         erb :'users/index'
     end
 
     post '/users' do 
-        @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+        @user = Users.create(name: params[:name], email: params[:email], password: params[:password])
         if @user.errors.any?
             @errors = @user.errors.messages
             erb :'sessions/signup'
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
 
     get '/users/:id' do 
-        @user = User.find_by(id: params[id])
+        @user = Users.find_by(id: params[id])
         erb :'users/show'
     end
 end
