@@ -1,0 +1,10 @@
+<form action='/record/<%= @record.id%>' method='post'>
+    <input type='hidden' name='_method' value='patch'>
+    <label for='sex'>Sex: </label>
+    <input type="text" name="sex" id="sex" value="<%=@record.sex%>"><br>
+    <label for="age">Age: </label>
+    <input type="text" name="age" id="age" value="<%=@record.age%>"><br>
+    <label for="disease">Disease: </label><br>
+    <textarea name="disease" id="disease"><%=@record.disease%></textarea><br>
+    <input type="submit" value="Update Info">
+</form>
