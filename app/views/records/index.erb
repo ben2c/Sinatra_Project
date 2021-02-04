@@ -1,0 +1,3 @@
+<% @records.each do |r| %>
+    <%= erb :'record/_records', locals: {user: record.user, record: record} %>
+<% end %>
