@@ -25,17 +25,17 @@ class ApplicationController < Sinatra::Base
 
     helpers do 
         def logged_in?
-            !!User.find_by(id: session[:user_id])
+            !!Users.find_by(id: session[:user_id])
         end
 
         def current_user
-            user = User.find_by(id: sessions[:user_id])
+            user = Users.find_by(id: session[:user_id])
             raise AuthError.new if user.nil?
             user
         end
 
         def authenticate(email, password)
-            user = User.find_by(email: email)
+            user = Users.find_by(email: email)
             raise AuthError.new unless !!user
             raise AuthError.new if !user.authenticate(password)
             session[:user_id] = user.id
