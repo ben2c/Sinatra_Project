@@ -1,7 +1,7 @@
-class AuthorError < Error
-    @@msg = "Unauthorized to view"
+class NotFoundError < Error
+    @@msg = "Server Not Found"
     @@links = {"/home" => "Go Home" }
-    @@status = 401
+    @@status = 404
 
     def self.msg
         @@msg
