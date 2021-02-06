@@ -1,4 +1,5 @@
 class Error < StandardError
+
     def self.msg
         @@msg ||= "Something Wrong Happened"
     end
@@ -9,6 +10,5 @@ class Error < StandardError
     def self.links
         @@links ||= []
     end
-
 end
 

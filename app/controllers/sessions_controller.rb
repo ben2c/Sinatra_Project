@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         begin
             authenticate(params[:email], params[:password])
             redirect '/home'
-        rescue AuthError => e
+        rescue AuthenError => e
             @errors = ["Wrong info entered, please try with correct email and/or password"]
             erb :'session/login'
         end

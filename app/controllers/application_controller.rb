@@ -63,7 +63,7 @@ class ApplicationController < Sinatra::Base
 
     end
 
-    error AuthError do 
+    error AuthenError do 
         status AuthError.status
         erb :error, locals: {msg: AuthError.msg, links: AuthError.links }, layout: false
     end

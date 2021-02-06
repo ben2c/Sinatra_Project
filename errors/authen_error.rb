@@ -1,4 +1,4 @@
-class AuthError < Error
+class AuthenError < Error
     @@msg = "Unable to authenticate"
     @@status = 401
     @@links = {'/login' => 'Log In', '/signup' => 'Sign Up'}
@@ -14,3 +14,5 @@ class AuthError < Error
     def self.links
         @@links
     end
+
+end
