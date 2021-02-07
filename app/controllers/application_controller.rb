@@ -5,7 +5,6 @@ class ApplicationController < Sinatra::Base
         set :public_folder, 'public'
         enable :sessions
         set :session_secret, "secret"
-        set :show_exceptions, false 
 
     end
 
