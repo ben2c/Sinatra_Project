@@ -1,4 +1,4 @@
-class AuthorError < Error
+class AuthorError < GeneralError
     @@msg = "Unauthorized to view"
     @@links = {"/home" => "Go Home" }
     @@status = 401

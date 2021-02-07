@@ -1,4 +1,4 @@
-class AuthenError < Error
+class AuthenError < GeneralError
     @@msg = "Unable to authenticate"
     @@status = 401
     @@links = {'/login' => 'Log In', '/signup' => 'Sign Up'}

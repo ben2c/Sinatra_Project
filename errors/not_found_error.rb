@@ -1,4 +1,4 @@
-class NotFoundError < Error
+class NotFoundError < GeneralError
     @@msg = "Server Not Found"
     @@links = {"/home" => "Go Home" }
     @@status = 404

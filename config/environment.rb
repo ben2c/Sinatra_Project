@@ -10,7 +10,7 @@ ActiveRecord::Base.establish_connection(
 
 require 'sinatra/base'
 require_relative '../constants'
-require_relative '../errors/error'
+require_relative '../errors/general_error'
 
 require_all 'app'
 require_all 'errors'
