@@ -6,7 +6,7 @@ require "active_record"
 require "sinatra/activerecord"
 require 'sinatra/activerecord/rake'
 
-desc "Allows console to have access to Models and Database"
+desc "Allows console to access DB"
 task :console do 
     Pry.start
 end
