@@ -1,3 +1,5 @@
-<h1>Welcome to Future Medical Records</h1>
-
-<p>To look at your medical records, please <a href='/login'>Log In</a> or <a href='/signup'>Sign Up</a></p>
+<% if logged_in? %>
+    <p class='div'>Welcome, <%= current_user.name %><br><a href='/show'>Click here for records</a> <a href='/logout'>Logout</a></p>
+<% else %>
+    <h1>Welcome to Future Medical Records</h1><br><p>To look at your medical records, please <a href='/login'>Log In</a> or <a href='/signup'>Sign Up</a></p>
+<% end %>
