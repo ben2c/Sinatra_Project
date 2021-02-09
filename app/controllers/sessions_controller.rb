@@ -1,39 +1,38 @@
 class SessionsController < ApplicationController
 
     get '/login' do
-        if logged_in?
-        redirect to "/users/#{current_user.id}"
-        else
-        erb :'session/login'
-        end
+        @failed = false
+        redirect '/show' if logged_in?
+        erb :"user/show"
     end
 
     post '/login' do
-        @user = Users.find_by(email: params[:email], password: params[:password])
-        if !@user.nil?
-        session[:user_id] = @user.id
-        current_user
-        erb :'/home'
+        user = Users.find_by(email: params[:email])
+
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            redirect '/show'
         else
-        redirect to '/login'
+            @failed = true
+            erb :"user/login"
         end
     end
     
     get '/signup' do
-        if logged_in?
-        redirect to "/users/#{current_user.id}"
-        else
-        erb :'/users/create_user'
-        end
+        redirect '/show' if logged_in?
+        @user = Users.new
+        erb :"user/signup"
     end
     
     post '/signup' do
-        @user = User.new(email: params[:email], password: params[:password])
-        if @user.save
-        session[:user_id] = @user.id
-        redirect to "/users/#{@user.id}"
+        @user = Users.create(name: params[:name], email: params[:email], password: params[:password])
+
+        if @user.errors.any?
+            session[:user_id] = @user.id
+            erb :"user/signup"
         else
-        redirect to '/signup'
+            session[:user_id] = @user.id
+            redirect '/show'
         end
     end
 end
