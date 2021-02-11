@@ -2,8 +2,8 @@ class SessionsController < ApplicationController
 
     get '/login' do
         @failed = false
-        redirect '/show' if logged_in?
-        erb :"user/show"
+        redirect '/records/index' if logged_in?
+        erb :"session/login"
     end
 
     post '/login' do
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     get '/signup' do
         redirect '/show' if logged_in?
         @user = Users.new
-        erb :"user/signup"
+        erb :"session/signup"
     end
     
     post '/signup' do
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 
         if @user.errors.any?
             session[:user_id] = @user.id
-            erb :"user/signup"
+            erb :"session/signup"
         else
             session[:user_id] = @user.id
             redirect '/show'

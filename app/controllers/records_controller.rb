@@ -1,45 +1,54 @@
 class RecordsController < ApplicationController
 
     get '/records' do
-        authorize
+        authenticate
+        @user = current_user
         @records = Records.all
         erb :'records/index'
     end
 
     get '/records/new' do 
-        authorize
+        authenticate
+        @record = Records.new
         erb :'records/new'
     end
 
     post '/records' do 
-        authorize
-        user = current_user
-        user.records.build(sex: params[:sex], age: params[:age], disease: params[:disease])
-        redirect '/records'
+        @record = Records.create(sex: params[:sex], age: params[:age], disease: params[:disease])
+        if @record.errors.any?
+        erb :"/records/new"
+        else
+        erb :"records/index"
+        end
     end
 
     delete '/records/:id' do 
         record = Records.find_by(id: params[:id])
-        authorize_user(record)
-        user = current_user
-        if record 
-            record.destroy
-            redirect '/users/#{user.id}'
-        end
+        record.delete if record.user_id == current_user.id
+    
+        redirect '/records/index'
     end
 
     get '/records/:id/edit' do
         @record = Records.find_by(id: params[:id])
-        authorize_user(@record)
-        erb :'records/edit'
+        authenticate
+        if logged_in? && @record.user_id == current_user.id
+        erb :"records/edit"
+        else
+        @failed = true
+        erb :"records/index"
+        end
     end
 
-    patch '/runs/:id' do 
-        user = current_user
+    patch '/records/:id' do
         @record = Records.find_by(id: params[:id])
-        authorize_user(@record)
         @record.update(sex: params[:sex], age: params[:age], disease: params[:disease])
-        redirect '/users/#{user.id}'
+                
+        if @record.errors.any?
+        erb :"/records/edit"
+        else
+        erb :"records/index"
+        end
     end
 
 end

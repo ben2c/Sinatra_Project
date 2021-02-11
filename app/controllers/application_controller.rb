@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/home' do 
-        authorize
+        authenticate
         erb :home
     end
 
