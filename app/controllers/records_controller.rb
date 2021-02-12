@@ -51,4 +51,11 @@ class RecordsController < ApplicationController
         end
     end
 
+    get '/records/:id' do  
+        @failed = false
+        authenticate
+        @record = Records.find_by_id(params[:id])
+        redirect '/records/index' if @record.nil?
+        erb :"records/index"
+    end
 end

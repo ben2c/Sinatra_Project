@@ -11,15 +11,15 @@ class SessionsController < ApplicationController
 
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect '/show'
+            redirect '/records'
         else
             @failed = true
-            erb :"user/login"
+            erb :"session/login"
         end
     end
     
     get '/signup' do
-        redirect '/show' if logged_in?
+        erb :'user/show' if logged_in?
         @user = Users.new
         erb :"session/signup"
     end

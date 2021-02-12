@@ -1,10 +1,15 @@
-<form action='/record/<%= @record.id%>' method='post'>
-    <input type='hidden' name='_method' value='patch'>
+<h2>Edit Your Medical Records</h2>
+
+<form action='/records/<%= @record.id %>' method='post'>
+    <input type='hidden' name='_method' value='patch' id='hidden'>
+
     <label for='sex'>Sex: </label>
-    <input type="text" name="sex" id="sex" value="<%=@record.sex%>"><br>
+    <input type="text" name="sex" id="sex" value="<%= @records.sex %>"><br>
+
     <label for="age">Age: </label>
-    <input type="text" name="age" id="age" value="<%=@record.age%>"><br>
-    <label for="disease">Disease: </label><br>
-    <textarea name="disease" id="disease"><%=@record.disease%></textarea><br>
+    <input type="text" name="age" id="age" value="<%= @records.age %>"><br>
+
+    <label for="disease">Disease: </label>
+    <textarea name="disease" id="disease"> value= "<%= @records.disease %"></textarea><br>
     <input type="submit" value="Update Info">
 </form>
