@@ -1,6 +1,7 @@
-<div class="records">
-    <h2><a href='/users/<%=user.id%'><%= user.name %></a></h2>
-    <p>Patient's Sex: <%= record.sex %></p>
-    <p>Patient's Age: <%= record.age %></p>
-    <p>Patient's Disease: <%= record.disease %></p>
-</div>
+ <h2>Welcome, <%= @user.name %>!</h2>
+
+
+<% @records.each do |r| %>
+<p><a href="/records/<%= record.id %>"><%= record.disease %></a> by <em>
+<a href="/user/<%= record.user.name %>"><%= record.user.name %></a></em></p>
+<% end %>

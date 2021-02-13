@@ -4,7 +4,7 @@ class RecordsController < ApplicationController
         authenticate
         @user = current_user
         @records = Records.all
-        erb :'records/index'
+        erb :'records'
     end
 
     get '/records/new' do 
@@ -16,9 +16,9 @@ class RecordsController < ApplicationController
     post '/records' do 
         @record = Records.create(sex: params[:sex], age: params[:age], disease: params[:disease])
         if @record.errors.any?
-        erb :"/records/new"
+        erb :"/new"
         else
-        erb :"records/index"
+        erb :"/records"
         end
     end
 
@@ -26,7 +26,7 @@ class RecordsController < ApplicationController
         record = Records.find_by(id: params[:id])
         record.delete if record.user_id == current_user.id
     
-        redirect '/records/index'
+        redirect '/records'
     end
 
     get '/records/:id/edit' do
@@ -36,7 +36,7 @@ class RecordsController < ApplicationController
         erb :"records/edit"
         else
         @failed = true
-        erb :"records/index"
+        erb :"records/show_record"
         end
     end
 
@@ -47,7 +47,7 @@ class RecordsController < ApplicationController
         if @record.errors.any?
         erb :"/records/edit"
         else
-        erb :"records/index"
+        erb :"records/show_record"
         end
     end
 
@@ -55,7 +55,7 @@ class RecordsController < ApplicationController
         @failed = false
         authenticate
         @record = Records.find_by_id(params[:id])
-        redirect '/records/index' if @record.nil?
-        erb :"records/index"
+        redirect '/records/records' if @record.nil?
+        erb :"records/show_record"
     end
 end
