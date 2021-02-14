@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     end
     
     get '/signup' do
-        erb :'/records' if logged_in?
+        redirect '/records' if logged_in?
         @user = Users.new
         erb :"user/signup"
     end

@@ -4,7 +4,7 @@ class RecordsController < ApplicationController
         authenticate
         @user = current_user
         @records = Records.all
-        erb :'records'
+        erb :'records/records'
     end
 
     get '/records/new' do 
@@ -55,7 +55,7 @@ class RecordsController < ApplicationController
         @failed = false
         authenticate
         @record = Records.find_by_id(params[:id])
-        redirect '/records/records' if @record.nil?
+        redirect '/records' if @record.nil?
         erb :"records/show_record"
     end
 end
