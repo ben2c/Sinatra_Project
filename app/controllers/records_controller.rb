@@ -14,12 +14,13 @@ class RecordsController < ApplicationController
         erb :'records/new'
     end
 
-    post '/records' do 
+    post '/records' do
+        @user = current_user
         @record = Records.create(sex: params[:sex], age: params[:age], disease: params[:disease])
         if @record.errors.any?
-        erb :"/new"
+        erb :"records/new"
         else
-        erb :"/records"
+        erb :"records/records"
         end
     end
 
