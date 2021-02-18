@@ -9,6 +9,7 @@ class RecordsController < ApplicationController
 
     get '/records/new' do 
         authenticate
+        @user = current_user
         @record = Records.new
         erb :'records/new'
     end
