@@ -3,4 +3,11 @@
 <p class="center"><a href="/records/new">Create New Record</a></p>
 <p class="center">Go back to <a href='/'>Home</a></p>
 
+<% @records.each do |r| %>
+    <p> <%= r.sex %> </p>
+    <p> <%= r.age %> </p>
+    <p> <%= r.disease %> </p>
+<% end %>
+
+
 

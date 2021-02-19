@@ -4,6 +4,7 @@ class RecordsController < ApplicationController
         authenticate
         @user = current_user
         @records = Records.all
+        #@record = Records.find_by(id: params[:id])
         erb :'records/records'
     end
 
