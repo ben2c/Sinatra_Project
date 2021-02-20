@@ -1,12 +1,11 @@
 <h2>Welcome, <%= @user.name %>!</h2>
 
 <p class="center"><a href="/records/new">Create New Record</a></p>
+<p class="center"><a href='/record/'
 <p class="center">Go back to <a href='/'>Home</a></p>
 
 <% @records.each do |r| %>
-    <p> <%= r.sex %> </p>
-    <p> <%= r.age %> </p>
-    <p> <%= r.disease %> </p>
+    <p>Sex: <%= r.sex %><br>Age: <%= r.age %><br>Disease:<%= r.disease %> </p>
 <% end %>
 
 
