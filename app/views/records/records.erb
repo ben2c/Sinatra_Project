@@ -11,6 +11,8 @@ table, th, td {
 <p class="center"><a href='/record/'
 <p class="center"><a href='/'>Home</a></p>
 
+
+
 <table style="width:100%">
   <tr>
     <th>Name</th>
@@ -19,11 +21,12 @@ table, th, td {
     <th>Disease</th>
   </tr>
  
-<tr>
-<% @records.each do |r| %>
-    <th><%=r.p_name</th><th><%= r.sex %></th> <th><%= r.age %></th> <th><%= r.disease %></th>
-<% end %>
-</tr>
+  <% @records.each do |r| %>
+    <tr>
+        <th><a href='/records/<%= r.id %>'><%= r.p_name %></a></th> <th><%= r.sex %></th> <th><%= r.age %></th> <th><%= r.disease %></th>
+    </tr>
+  <% end %>
+
 
 </table>
 

@@ -17,7 +17,8 @@ class RecordsController < ApplicationController
 
     post '/records' do
         @user = current_user
-        @record = Records.create(sex: params[:sex], age: params[:age], disease: params[:disease])
+        @record = Records.create(p_name: params[:p_name], sex: params[:sex], age: params[:age], disease: params[:disease])
+        @records = Records.all
         if @record.errors.any?
         erb :"records/new"
         else
@@ -45,7 +46,7 @@ class RecordsController < ApplicationController
 
     patch '/records/:id' do
         @record = Records.find_by(id: params[:id])
-        @record.update(sex: params[:sex], age: params[:age], disease: params[:disease])
+        @record.update(p_name: params[:p_name], sex: params[:sex], age: params[:age], disease: params[:disease])
                 
         if @record.errors.any?
         erb :"/records/edit"
