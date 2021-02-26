@@ -1,12 +1,32 @@
-<h2>Welcome, <%= @user.name %>!</h2>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+
+<h2>Welcome, Dr. <%= @user.name %>!</h2>
 
 <p class="center"><a href="/records/new">Create New Record</a></p>
 <p class="center"><a href='/record/'
-<p class="center">Go back to <a href='/'>Home</a></p>
+<p class="center"><a href='/'>Home</a></p>
 
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Sex</th> 
+    <th>Age</th>
+    <th>Disease</th>
+  </tr>
+ 
+<tr>
 <% @records.each do |r| %>
-    <p>Sex: <%= r.sex %><br>Age: <%= r.age %><br>Disease:<%= r.disease %> </p>
+    <th><%=r.p_name</th><th><%= r.sex %></th> <th><%= r.age %></th> <th><%= r.disease %></th>
 <% end %>
+</tr>
+
+</table>
+
 
 
 

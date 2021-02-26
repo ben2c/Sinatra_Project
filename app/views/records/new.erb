@@ -1,6 +1,9 @@
 <h3>Enter Medical Records Here For <%= @user.name %></h3>
 
 <form action='/records' method='post'>
+    <label for="p_name">Patient's Name:</label>
+    <input type="text" name="p_name" id="p_name"><br><br>
+
     <label for="sex">Patient's Sex:</label>
     <input type="text" name="sex" id="sex"><br><br>
 

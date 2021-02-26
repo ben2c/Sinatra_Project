@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_01_27_221918) do
 
   create_table "records", force: :cascade do |t|
+    t.string "p_name"
     t.string "sex"
     t.integer "age"
     t.string "disease"
