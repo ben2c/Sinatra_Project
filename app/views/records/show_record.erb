@@ -9,3 +9,10 @@
       <button type="submit" alt="Delete Record">Delete this Record</button>
       </p>
 </form>
+
+<form action="/records/<%= @record.id %>/edit" method="get"><p class="bottom">
+      <button type="submit" alt="Edit Record">Edit this Record</button>
+        </p>
+</form><br>
+
+<p class="bottom"><a href='/records'>Back to Main Page</a></p>

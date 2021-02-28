@@ -36,10 +36,9 @@ class RecordsController < ApplicationController
     get '/records/:id/edit' do
         @record = Records.find_by(id: params[:id])
         authenticate
-        if logged_in? && @record.user_id == current_user.id
+        if logged_in? 
         erb :"records/edit"
         else
-        @failed = true
         erb :"records/show_record"
         end
     end
