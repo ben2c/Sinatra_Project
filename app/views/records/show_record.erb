@@ -1,5 +1,5 @@
-<h3> <%= @record 
+<h2>Medical Data for <%= @record.p_name %> </h2>
 
-<% @records.each do |r| %>
-    <%= erb :'record/_records', locals: {user: record.user, record: record} %>
-<% end %>
+<h3>Patient's Sex: <%= @record.sex %> </h3><br>
+<h3>Patient's Age: <%= @record.age %> </h3><br>
+<h3>Patient's Disease/Illness: <%= @record.disease %> </h3><br>

@@ -58,6 +58,7 @@ class RecordsController < ApplicationController
     get '/records/:id' do  
         @failed = false
         authenticate
+        @records = Records.all
         @record = Records.find_by_id(params[:id])
         redirect '/records' if @record.nil?
         erb :"records/show_record"

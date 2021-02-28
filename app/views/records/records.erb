@@ -8,22 +8,18 @@ table, th, td {
 <h2>Welcome, Dr. <%= @user.name %>!</h2>
 
 <p class="center"><a href="/records/new">Create New Record</a></p>
-<p class="center"><a href='/record/'
-<p class="center"><a href='/'>Home</a></p>
+<p class="center"><a href='/'>Home</a></p><br>
 
 
-
+<p class="title">List of the Current Patients</p>
 <table style="width:100%">
   <tr>
     <th>Name</th>
-    <th>Sex</th> 
-    <th>Age</th>
-    <th>Disease</th>
   </tr>
  
   <% @records.each do |r| %>
     <tr>
-        <th><a href='/records/<%= r.id %>'><%= r.p_name %></a></th> <th><%= r.sex %></th> <th><%= r.age %></th> <th><%= r.disease %></th>
+        <th><a href='/records/<%= r.id %>'><%= r.p_name %></a></th>
     </tr>
   <% end %>
 
