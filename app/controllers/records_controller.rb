@@ -26,10 +26,10 @@ class RecordsController < ApplicationController
         end
     end
 
-    delete '/records/:id' do 
-        record = Records.find_by(id: params[:id])
-        record.delete if record.user_id == current_user.id
-    
+    delete '/records/:id/delete' do 
+        @record = Records.find_by(id: params[:id])
+        @record.delete
+ 
         redirect '/records'
     end
 

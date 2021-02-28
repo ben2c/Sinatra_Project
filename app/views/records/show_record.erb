@@ -3,3 +3,9 @@
 <h3>Patient's Sex: <%= @record.sex %> </h3><br>
 <h3>Patient's Age: <%= @record.age %> </h3><br>
 <h3>Patient's Disease/Illness: <%= @record.disease %> </h3><br>
+
+<form method="POST" action="/records/<%= @record.id %>/delete"><p class="bottom">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <button type="submit" alt="Delete Record">Delete this Record</button>
+      </p>
+</form>
