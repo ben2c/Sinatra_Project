@@ -1,3 +1,9 @@
+<% if @failed %>
+	<div id="error">
+		<p>You cannot edit if you're not the doctor</p>
+	</div>
+<% end %>
+
 <h2>Edit Patient's Medical Records</h2>
 
 <form action='/records/<%= @record.id %>' method='post'>
@@ -14,5 +20,6 @@
 
     <label for="disease">Disease: </label>
     <textarea name="disease" id="disease" value= "<%= @record.disease %"></textarea><br>
+
     <input type="submit" value="Update Info">
 </form>

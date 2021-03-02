@@ -4,26 +4,37 @@ class RecordsController < ApplicationController
         authenticate
         @user = current_user
         @records = Records.all
-        #@record = Records.find_by(id: params[:id])
         erb :'records/records'
     end
 
     get '/records/new' do 
         authenticate
-        @user = current_user
         @record = Records.new
         erb :'records/new'
     end
 
     post '/records' do
         @user = current_user
-        @record = Records.create(p_name: params[:p_name], sex: params[:sex], age: params[:age], disease: params[:disease])
         @records = Records.all
-        if @record.errors.any?
-        erb :"records/new"
-        else
-        erb :"records/records"
+        if logged_in?
+            if params[:p_name] == '' || params[:sex] == '' || params[:age] == '' || params[:disease] == ''
+                redirect to '/records/new'
+            else
+                @record = Records.create(p_name: params[:p_name], sex: params[:sex], age: params[:age], disease: params[:disease])
+                @record.save
+                if @record.save
+                    erb :"records/records"
+                else 
+                    erb :"records/else"
+                end
+            end
         end
+
+        #if @record.errors.any?
+        #    erb :"records/new"
+        #else
+        #    erb :"records/records"
+        #end
     end
 
     delete '/records/:id/delete' do 
@@ -39,6 +50,7 @@ class RecordsController < ApplicationController
         if logged_in? 
         erb :"records/edit"
         else
+        @failed = true
         erb :"records/show_record"
         end
     end

@@ -1,6 +1,6 @@
 # Medical Records (Sinatra_Project)
 
-A platform to access a database of medical records
+A platform to access a database of medical records for various doctors at Flatiron Hospital.
 
 ## Installation Guide
 

@@ -1,3 +1,9 @@
+<% if @failed %>
+	<div id="error">
+		<p>You can not view if you're not the doctor</p>
+	</div>
+<% end %>
+
 <h2>Medical Data for <%= @record.p_name %> </h2>
 
 <h3>Patient's Sex: <%= @record.sex %> </h3><br>
