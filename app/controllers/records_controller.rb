@@ -29,12 +29,6 @@ class RecordsController < ApplicationController
                 end
             end
         end
-
-        #if @record.errors.any?
-        #    erb :"records/new"
-        #else
-        #    erb :"records/records"
-        #end
     end
 
     delete '/records/:id/delete' do 

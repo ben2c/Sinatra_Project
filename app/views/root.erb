@@ -1,5 +1,7 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
 <% if logged_in? %>
-    <p class='div'>Welcome, <%= current_user.name %><br><a href='/records'>Click here for records</a> <a href='/logout'>Logout</a></p>
+    <p class='div'>Welcome, <%= current_user.name %><br><br><a href='/records'>Click here for records</a><br><a href='/logout'>Logout</a></p>
 <% else %>
     <h1>Welcome to Flatiron Medical Records</h1><br><p>To look at your medical records, please <a href='/login'>Log In</a> or <a href='/signup'>Sign Up</a></p>
 <% end %>
