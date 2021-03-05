@@ -11,3 +11,4 @@ gem "require_all"
 gem "bcrypt", "~> 3.1"
 gem "rerun"
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'tux'

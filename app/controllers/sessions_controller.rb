@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     end
 
     post '/login' do
-        user = Users.find_by(email: params[:email])
+        user = User.find_by(email: params[:email])
 
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
@@ -20,12 +20,12 @@ class SessionsController < ApplicationController
     
     get '/signup' do
         redirect '/records' if logged_in?
-        @user = Users.new
+        @user = User.new
         erb :"user/signup"
     end
     
     post '/signup' do
-        @user = Users.create(name: params[:name], email: params[:email], password: params[:password])
+        @user = User.create(name: params[:name], email: params[:email], password: params[:password])
 
         if @user.errors.any?
             session[:user_id] = @user.id

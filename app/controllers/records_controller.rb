@@ -3,43 +3,38 @@ class RecordsController < ApplicationController
     get '/records' do
         authenticate
         @user = current_user
-        @records = Records.all
+        @records = Record.all
         erb :'records/records'
     end
 
     get '/records/new' do 
         authenticate
-        @record = Records.new
+        @record = user.Record.new
         erb :'records/new'
     end
 
     post '/records' do
         @user = current_user
-        @records = Records.all
+        @records = Record.all
         if logged_in?
-            if params[:p_name] == '' || params[:sex] == '' || params[:age] == '' || params[:disease] == ''
-                redirect to '/records/new'
-            else
-                @record = Records.create(p_name: params[:p_name], sex: params[:sex], age: params[:age], disease: params[:disease])
-                @record.save
-                if @record.save
+            @record = Record.new(params)
+            if @record.save 
                     erb :"records/records"
                 else 
                     erb :"records/else"
                 end
-            end
         end
     end
 
     delete '/records/:id/delete' do 
-        @record = Records.find_by(id: params[:id])
+        @record = Record.find_by(id: params[:id])
         @record.delete
  
         redirect '/records'
     end
 
     get '/records/:id/edit' do
-        @record = Records.find_by(id: params[:id])
+        @record = Record.find_by(id: params[:id])
         authenticate
         if logged_in? 
         erb :"records/edit"
@@ -50,7 +45,7 @@ class RecordsController < ApplicationController
     end
 
     patch '/records/:id' do
-        @record = Records.find_by(id: params[:id])
+        @record = Record.find_by(id: params[:id])
         @record.update(p_name: params[:p_name], sex: params[:sex], age: params[:age], disease: params[:disease])
                 
         if @record.errors.any?
@@ -63,8 +58,8 @@ class RecordsController < ApplicationController
     get '/records/:id' do  
         @failed = false
         authenticate
-        @records = Records.all
-        @record = Records.find_by_id(params[:id])
+        @records = Record.all
+        @record = Record.find_by_id(params[:id])
         redirect '/records' if @record.nil?
         erb :"records/show_record"
     end
