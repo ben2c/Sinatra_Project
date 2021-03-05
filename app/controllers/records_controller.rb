@@ -3,21 +3,21 @@ class RecordsController < ApplicationController
     get '/records' do
         authenticate
         @user = current_user
-        @records = Record.all
+        @records = current_user.records.all
         erb :'records/records'
     end
 
     get '/records/new' do 
         authenticate
-        @record = user.Record.new
+        @record = current_user.records.new
         erb :'records/new'
     end
 
     post '/records' do
         @user = current_user
-        @records = Record.all
+        @records = current_user.records.all
         if logged_in?
-            @record = Record.new(params)
+            @record = current_user.records.new(params)
             if @record.save 
                     erb :"records/records"
                 else 
